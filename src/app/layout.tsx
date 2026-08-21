@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="ja" className={`${jetbrainsMono.variable} ${zenKakuGothicNew.variable}`}>
-      <body>{children}</body>
+      <body suppressHydrationWarning >{children}</body>
     </html>
   );
 }
