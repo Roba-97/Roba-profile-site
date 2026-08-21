@@ -1,0 +1,10 @@
+.section {
+  position: relative;
+  padding: 3.5rem 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section+.section {
+  border-top: 1px dashed var(--line);
+}
