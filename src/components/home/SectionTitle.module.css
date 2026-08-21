@@ -1,0 +1,9 @@
+.sectionTitle {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--terracotta);
+  margin: 0 0 1.1rem;
+}
