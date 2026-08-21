@@ -21,7 +21,7 @@ export async function Blog() {
   return (
     <Section id="blog" narrow>
       <div className={styles.head}>
-        <SectionTitle className={styles.headTitle}>BLOG — 記録してきたこと</SectionTitle>
+        <SectionTitle className={styles.headTitle}>BLOG</SectionTitle>
         <Link className={styles.moreLink} href="/blog">
           もっと見る →
         </Link>
