@@ -1,0 +1,13 @@
+.inner {
+  max-width: var(--measure);
+  margin: 0 auto;
+  color: var(--ink);
+}
+
+.copy p {
+  margin: 0 0 1.4em;
+}
+
+.lead {
+  color: var(--ink-soft);
+}
