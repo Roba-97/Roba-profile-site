@@ -1,12 +1,18 @@
 .section {
   position: relative;
-  padding: 2.5rem 1.5rem;
+  padding: 3.5rem 2rem;
   max-width: 900px;
   margin: 0 auto;
 }
 
-.section+.section {
-  border-top: 1px dashed var(--line);
+.section+.section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 1.5rem;
+  right: 1.5rem;
+  height: 1.5px;
+  background-image: linear-gradient(to right, var(--terracotta) 0%, var(--line) 100%)
 }
 
 .inner {

@@ -3,7 +3,7 @@
   align-items: baseline;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 0.3rem;
+  margin-bottom: 1.1rem;
 }
 
 .headTitle {
@@ -28,10 +28,10 @@
   padding: 0;
 }
 .list li {
-  border-top: 1px dashed var(--line);
+  border-top: 1.5px solid var(--line);
 }
 .list li:last-child {
-  border-bottom: 1px dashed var(--line);
+  border-bottom: 1.5px solid var(--line);
 }
 .list a {
   display: flex;
