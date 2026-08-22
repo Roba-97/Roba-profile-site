@@ -26,18 +26,23 @@ export async function Blog() {
           もっと見る →
         </Link>
       </div>
-      <div className={styles.grid}>
+      <ul className={styles.list}>
         {contents.map((post) => {
           const publishedAt = post.publishedAt ?? post.createdAt;
           return (
-            <Link key={post.id} className={styles.card} href={`/blog/${post.id}`}>
-              <span className={styles.nodeMark} aria-hidden="true" />
-              <time dateTime={publishedAt}>{formatDate(publishedAt)}</time>
-              <h3>{post.title}</h3>
-            </Link>
+            <li key={post.id}>
+              <Link href={`/blog/${post.id}`}>
+                <span className={styles.nodeMark} aria-hidden="true" />
+                <span className={styles.title}>{post.title}</span>
+                <time className={styles.date} dateTime={publishedAt}>
+                  {formatDate(publishedAt)}
+                </time>
+                <span className={styles.go}>→</span>
+              </Link>
+            </li>
           );
         })}
-      </div>
+      </ul>
     </Section>
   );
 }

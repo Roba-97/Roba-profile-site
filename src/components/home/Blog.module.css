@@ -14,61 +14,56 @@
   font-family: var(--font-mono);
   font-size: 0.86rem;
   color: var(--ink-soft);
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 2px;
-  transition: color 0.25s ease, border-color 0.25s ease;
+  transition: color 0.25s ease;
   white-space: nowrap;
 }
 .moreLink:hover,
 .moreLink:focus-visible {
   color: var(--amber);
-  border-color: var(--amber);
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.1rem;
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
-@media (max-width: 760px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
+.list li {
+  border-top: 1px dashed var(--line);
 }
-
-.card {
-  display: block;
-  padding: 1.6rem 1.4rem;
-  border-radius: 3px;
-  background: var(--panel);
-  border: 1.5px solid var(--line);
-  transition: transform 0.3s ease, border-color 0.3s ease;
+.list li:last-child {
+  border-bottom: 1px dashed var(--line);
 }
-.card:hover,
-.card:focus-visible {
-  transform: translateY(-4px);
-  border-color: var(--amber);
+.list a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.15rem 0.2rem;
+  transition: gap 0.25s ease, color 0.25s ease;
+}
+.list a:hover,
+.list a:focus-visible {
+  gap: 1.3rem;
+  color: var(--amber);
 }
 
 .nodeMark {
-  display: block;
-  width: 9px;
-  height: 9px;
+  flex: none;
+  width: 8px;
+  height: 8px;
   border-radius: 2px;
   background: var(--amber);
   transform: rotate(45deg);
-  margin-bottom: 1rem;
 }
-.card time {
-  display: block;
+.title {
+  flex: 1;
+  font-size: 0.98rem;
+}
+.date {
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   color: var(--ink-faint);
-  margin-bottom: 0.5rem;
 }
-.card h3 {
-  font-size: 1rem;
-  font-weight: 500;
-  margin: 0;
-  line-height: 1.6;
+.go {
+  opacity: 0.5;
+  font-size: 0.85em;
 }

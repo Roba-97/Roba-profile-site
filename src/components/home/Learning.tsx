@@ -13,18 +13,21 @@ export function Learning() {
   return (
     <Section id="learning" narrow>
       <SectionTitle>NOW LEARNING</SectionTitle>
-      <ul className={styles.list}>
+      <div className={styles.grid}>
         {learningPosts.map((post) => (
-          <li key={post.title}>
-            <a href={post.href} target="_blank" rel="noopener">
-              <span className={styles.nodeMark} aria-hidden="true" />
-              <span className={styles.title}>{post.title}</span>
-              <span className={styles.platform}>{post.platform}</span>
-              <span className={styles.go}>↗</span>
-            </a>
-          </li>
+          <a
+            key={post.title}
+            className={styles.card}
+            href={post.href}
+            target="_blank"
+            rel="noopener"
+          >
+            <span className={styles.nodeMark} aria-hidden="true" />
+            <span className={styles.platform}>{post.platform}</span>
+            <h3>{post.title}</h3>
+          </a>
         ))}
-      </ul>
+      </div>
     </Section>
   );
 }
