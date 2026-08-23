@@ -38,13 +38,22 @@ async function fetchFeed(url: string, source: "note" | "zenn"): Promise<Learning
   }
 }
 
-export async function getLearningFeed(): Promise<LearningPost[]> {
+async function getAllFeedItems(): Promise<LearningPost[]> {
   const [noteItems, zennItems] = await Promise.all([
     fetchFeed("https://note.com/r_obaoba/rss", "note"),
     fetchFeed("https://zenn.dev/roba_97/feed", "zenn"),
   ]);
 
-  return [...noteItems, ...zennItems]
-    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
-    .slice(0, 4);
+  return [...noteItems, ...zennItems].sort(
+    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+  );
+}
+
+export async function getArticleFeed(limit?: number): Promise<LearningPost[]> {
+  const items = await getAllFeedItems();
+  return typeof limit === "number" ? items.slice(0, limit) : items;
+}
+
+export async function getLearningFeed(): Promise<LearningPost[]> {
+  return getArticleFeed(4);
 }
