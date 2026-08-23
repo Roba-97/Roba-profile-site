@@ -22,7 +22,7 @@ export async function Blog() {
     <Section id="blog" narrow>
       <div className={styles.head}>
         <SectionTitle className={styles.headTitle}>BLOG</SectionTitle>
-        <Link className={styles.moreLink} href="/blog">
+        <Link className={styles.moreLink} href="/blog?filter=blog">
           もっと見る →
         </Link>
       </div>

@@ -1,3 +1,17 @@
+.back {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+  margin-bottom: 1.6rem;
+  transition: color 0.25s ease;
+}
+
+.back:hover,
+.back:focus-visible {
+  color: var(--amber);
+}
+
 .head {
   display: flex;
   align-items: baseline;
