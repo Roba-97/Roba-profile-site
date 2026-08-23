@@ -18,15 +18,20 @@
   border-color: var(--amber);
 }
 
-.nodeMark {
-  display: block;
-  width: 9px;
-  height: 9px;
-  border-radius: 2px;
-  background: var(--rust);
-  transform: rotate(45deg);
+.thumbnailWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1200 / 630;
+  border-radius: 3px;
+  overflow: hidden;
   margin-bottom: 1rem;
+  background: var(--panel);
 }
+
+.thumbnail {
+  object-fit: cover;
+}
+
 .platform {
   display: block;
   font-family: var(--font-mono);
@@ -39,4 +44,8 @@
   font-weight: 500;
   margin: 0;
   line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }

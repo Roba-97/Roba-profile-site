@@ -1,29 +1,37 @@
+import Image from "next/image";
+import { getLearningFeed } from "@/lib/feeds";
 import { Section } from "./Section";
 import { SectionTitle } from "./SectionTitle";
 import styles from "./Learning.module.css";
 
-const learningPosts = [
-  { title: "学び始めて2週間で気づいたこと", href: "https://note.com/YOUR_USERNAME/n_xxxxxxxx", platform: "note" },
-  { title: "エンジニアを目指す前に読んだ3冊", href: "https://note.com/YOUR_USERNAME/n_xxxxxxxx", platform: "note" },
-  { title: "初めてのOSSコントリビュート記録", href: "https://note.com/YOUR_USERNAME/n_xxxxxxxx", platform: "note" },
-  { title: "配属前にやっておきたい基礎固め", href: "https://note.com/YOUR_USERNAME/n_xxxxxxxx", platform: "note" },
-];
-
-export function Learning() {
+export async function Learning() {
+  const posts = await getLearningFeed();
   return (
     <Section id="learning" narrow>
       <SectionTitle>NOW LEARNING</SectionTitle>
       <div className={styles.grid}>
-        {learningPosts.map((post) => (
+        {posts.map((post) => (
           <a
-            key={post.title}
+            key={post.link}
             className={styles.card}
-            href={post.href}
+            href={post.link}
             target="_blank"
             rel="noopener"
           >
-            <span className={styles.nodeMark} aria-hidden="true" />
-            <span className={styles.platform}>{post.platform}</span>
+            {post.thumbnail && (
+              <div className={styles.thumbnailWrap}>
+                <Image
+                  src={post.thumbnail}
+                  alt=""
+                  fill
+                  sizes="(max-width: 560px) 100vw, 300px"
+                  className={styles.thumbnail}
+                />
+              </div>
+            )}
+            <span className={styles.platform}>
+              {post.source === "note" ? "note" : "Zenn"}
+            </span>
             <h3>{post.title}</h3>
           </a>
         ))}
