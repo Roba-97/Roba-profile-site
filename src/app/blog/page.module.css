@@ -1,0 +1,42 @@
+.head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.6rem;
+}
+
+.headTitle {
+  margin-bottom: 0;
+}
+
+.tags {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  padding: 0.35rem 0.9rem;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  transition: border-color 0.25s ease, color 0.25s ease;
+}
+.tag:hover,
+.tag:focus-visible {
+  border-color: var(--amber);
+  color: var(--ink);
+}
+.tagActive {
+  border-color: var(--terracotta);
+  color: var(--terracotta);
+}
+
+.empty {
+  color: var(--ink-faint);
+  padding: 1.5rem 0.2rem;
+}
