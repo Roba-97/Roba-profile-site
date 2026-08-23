@@ -1,3 +1,27 @@
+.head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.1rem;
+}
+
+.headTitle {
+  margin-bottom: 0;
+}
+
+.moreLink {
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+  transition: color 0.25s ease;
+  white-space: nowrap;
+}
+.moreLink:hover,
+.moreLink:focus-visible {
+  color: var(--amber);
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
