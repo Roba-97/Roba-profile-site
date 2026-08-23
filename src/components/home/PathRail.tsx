@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 import styles from "./PathRail.module.css";
 
 const railItems = [
-  { id: "hero", label: "Who am I", accent: "var(--terracotta)" },
-  { id: "about", label: "About", accent: "var(--amber)" },
-  { id: "links", label: "Links", accent: "var(--rust)" },
-  { id: "blog", label: "Blog", accent: "var(--amber)" },
-  { id: "skills", label: "Skills", accent: "var(--terracotta)" },
-  { id: "learning", label: "Now Learning", accent: "var(--amber)" },
+  { id: "hero", label: "はじめに", accent: "var(--terracotta)" },
+  { id: "about", label: "わたしについて", accent: "var(--amber)" },
+  { id: "links", label: "リンク一覧", accent: "var(--rust)" },
+  { id: "blog", label: "ブログ", accent: "var(--amber)" },
+  { id: "skills", label: "できること", accent: "var(--terracotta)" },
+  { id: "learning", label: "今学んでいること", accent: "var(--amber)" },
 ];
 
 export function PathRail() {

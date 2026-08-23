@@ -9,8 +9,8 @@
   content: "";
   position: absolute;
   top: 0;
-  left: 1.5rem;
-  right: 1.5rem;
+  left: 2rem;
+  right: 2rem;
   height: 1.5px;
   background-image: linear-gradient(to right, var(--terracotta) 0%, var(--line) 100%)
 }

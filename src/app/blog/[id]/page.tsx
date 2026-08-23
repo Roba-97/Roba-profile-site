@@ -1,4 +1,4 @@
-
+import { notFound } from "next/navigation";
 import { client, BLOG_ENDPOINT, type Blog } from "@/lib/microcms";
 
 export default async function BlogDetailPage({
@@ -7,10 +7,13 @@ export default async function BlogDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const blog = await client.getListDetail<Blog>({
-    endpoint: BLOG_ENDPOINT,
-    contentId: id,
-  });
+  const blog = await client
+    .getListDetail<Blog>({ endpoint: BLOG_ENDPOINT, contentId: id })
+    .catch(() => null);
+
+  if (!blog) {
+    notFound();
+  }
 
   return (
     <article>

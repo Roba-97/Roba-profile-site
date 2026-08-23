@@ -8,7 +8,7 @@ export function Section({
 }: {
   id: string;
   className?: string;
-    narrow?: boolean;
+  narrow?: boolean;
   children: React.ReactNode;
 }) {
   return (
