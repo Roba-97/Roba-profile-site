@@ -1,0 +1,21 @@
+.section {
+  position: relative;
+  padding: 3.5rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section+.section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 2rem;
+  right: 2rem;
+  height: 1.5px;
+  background-image: linear-gradient(to right, var(--terracotta) 0%, var(--line) 100%)
+}
+
+.inner {
+  max-width: var(--measure);
+  margin: 0 auto;
+}
