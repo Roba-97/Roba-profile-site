@@ -26,6 +26,9 @@ export default async function BlogPage({
   return (
     <main>
       <Section id="blog-list" narrow>
+        <Link className={styles.back} href="/">
+          ← トップへ
+        </Link>
         <div className={styles.head}>
           <SectionTitle className={styles.headTitle}>BLOG</SectionTitle>
           <nav className={styles.tags} aria-label="記事の絞り込み">
