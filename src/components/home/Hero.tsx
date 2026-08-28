@@ -1,4 +1,5 @@
 import { Section } from "./Section";
+import { HeroLinks } from "./HeroLinks";
 import styles from "./Hero.module.css";
 
 export function Hero() {
@@ -15,6 +16,7 @@ export function Hero() {
         学んだ分だけ、進める道が増えていく。<br />
         その歩みを、一つずつ残していく場所。
       </p>
+      <HeroLinks />
     </Section>
   );
 }
