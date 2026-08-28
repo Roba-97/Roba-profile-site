@@ -101,3 +101,23 @@
     display: none;
   }
 }
+
+.track {
+  position: absolute;
+  left: 50%;
+  top: 5.5px;
+  /* 最初のドット中心 */
+  bottom: 5.5px;
+  /* 最後のドット中心 */
+  width: 2px;
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: top;
+  background: linear-gradient(var(--terracotta), var(--amber));
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    transform: translateX(-50%) scaleY(1);
+  }
+}
