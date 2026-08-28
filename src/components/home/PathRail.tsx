@@ -9,7 +9,7 @@ const railItems = [
   { id: "links", label: "リンク一覧", accent: "var(--rust)" },
   { id: "blog", label: "ブログ", accent: "var(--amber)" },
   { id: "skills", label: "できること", accent: "var(--terracotta)" },
-  { id: "learning", label: "今学んでいること", accent: "var(--amber)" },
+  { id: "learning", label: "これまでの学び", accent: "var(--amber)" },
 ];
 
 export function PathRail() {
@@ -44,6 +44,7 @@ export function PathRail() {
             style={{ "--drop": item.accent } as React.CSSProperties}
           >
             <a href={`#${item.id}`}>
+              <span className={styles.tooltip} aria-hidden="true">{item.label}</span>
               <span className="visually-hidden">{item.label}</span>
             </a>
           </li>
