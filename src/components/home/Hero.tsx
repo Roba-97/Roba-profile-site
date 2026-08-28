@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { Section } from "./Section";
 import { HeroLinks } from "./HeroLinks";
+import { HeroCanvas } from "./HeroCanvas";
 import styles from "./Hero.module.css";
 
 export function Hero() {
@@ -31,6 +32,7 @@ export function Hero() {
 
   return (
     <Section id="hero" className={styles.hero}>
+      <HeroCanvas />
       <p className={styles.statusTag} ref={statusRef}>
         <span><b>status</b>: growing</span>
         <span><b>role</b>: 学生 → エンジニア（2027〜）</span>
