@@ -22,6 +22,12 @@
   color: var(--amber);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .list a {
+    transition: none;
+  }
+}
+
 .nodeMark {
   flex: none;
   width: 8px;
