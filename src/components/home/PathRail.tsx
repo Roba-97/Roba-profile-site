@@ -44,6 +44,7 @@ export function PathRail() {
             style={{ "--drop": item.accent } as React.CSSProperties}
           >
             <a href={`#${item.id}`}>
+              <span className={styles.tooltip} aria-hidden="true">{item.label}</span>
               <span className="visually-hidden">{item.label}</span>
             </a>
           </li>
