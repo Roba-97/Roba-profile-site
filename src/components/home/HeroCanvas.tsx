@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
+import Image from "next/image";
 import * as THREE from "three";
 import styles from "./HeroCanvas.module.css";
 
@@ -55,17 +56,44 @@ const fragmentShader = /* glsl */ `
   }
 `;
 
+function subscribeReduceMotion(callback: () => void) {
+  const mql = window.matchMedia("(prefers-reduced-motion: reduce)");
+  mql.addEventListener("change", callback);
+  return () => mql.removeEventListener("change", callback);
+}
+
+function supportsWebGL() {
+  try {
+    const canvas = document.createElement("canvas");
+    return !!(canvas.getContext("webgl2") || canvas.getContext("webgl"));
+  } catch {
+    return false;
+  }
+}
+
+function getShowPosterSnapshot() {
+  return (
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+    !supportsWebGL()
+  );
+}
+
+function getShowPosterServerSnapshot() {
+  return false;
+}
+
 export function HeroCanvas() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const showPoster = useSyncExternalStore(
+    subscribeReduceMotion,
+    getShowPosterSnapshot,
+    getShowPosterServerSnapshot
+  );
 
   useEffect(() => {
+    if (showPoster) return;
     const container = containerRef.current;
     if (!container) return;
-
-    const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    if (reduceMotion) return;
 
     let renderer: THREE.WebGLRenderer;
     try {
@@ -145,9 +173,19 @@ export function HeroCanvas() {
       renderer.dispose();
       container.removeChild(renderer.domElement);
     };
-  }, []);
+  }, [showPoster]);
 
   return (
-    <div ref={containerRef} className={styles.canvasWrap} aria-hidden="true" />
+    <div ref={containerRef} className={styles.canvasWrap} aria-hidden="true">
+      {showPoster && (
+        <Image
+          src="/hero-poster.webp"
+          alt=""
+          fill
+          sizes="100vw"
+          className={styles.poster}
+        />
+      )}
+    </div>
   );
 }
