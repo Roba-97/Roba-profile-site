@@ -1,4 +1,6 @@
 .hero {
+  position: relative;
+  isolation: isolate;
   min-height: 62vh;
   display: flex;
   flex-direction: column;

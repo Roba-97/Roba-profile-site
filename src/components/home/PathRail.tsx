@@ -1,6 +1,8 @@
 "use client"
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./PathRail.module.css";
 
 const railItems = [
@@ -9,11 +11,12 @@ const railItems = [
   { id: "links", label: "リンク一覧", accent: "var(--rust)" },
   { id: "blog", label: "ブログ", accent: "var(--amber)" },
   { id: "skills", label: "できること", accent: "var(--terracotta)" },
-  { id: "learning", label: "今学んでいること", accent: "var(--amber)" },
+  { id: "learning", label: "これまでの学び", accent: "var(--amber)" },
 ];
 
 export function PathRail() {
   const [activeId, setActiveId] = useState<string | null>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const sections = document.querySelectorAll("main section");
@@ -34,8 +37,35 @@ export function PathRail() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (!trackRef.current || reduceMotion) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        trackRef.current,
+        { scaleY: 0 },
+        {
+          scaleY: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: "main",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: true,
+          },
+        }
+      );
+    });
+    return () => ctx.revert();
+  }, []);
+
   return (
     <nav className={styles.rail} aria-label="セクション">
+      <div className={styles.track} ref={trackRef} aria-hidden="true" />
       <ol>
         {railItems.map((item) => (
           <li
@@ -44,6 +74,7 @@ export function PathRail() {
             style={{ "--drop": item.accent } as React.CSSProperties}
           >
             <a href={`#${item.id}`}>
+              <span className={styles.tooltip} aria-hidden="true">{item.label}</span>
               <span className="visually-hidden">{item.label}</span>
             </a>
           </li>

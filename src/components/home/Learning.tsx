@@ -10,7 +10,7 @@ export async function Learning() {
   return (
     <Section id="learning" narrow>
       <div className={styles.head}>
-        <SectionTitle className={styles.headTitle}>RECENT LEARNING</SectionTitle>
+        <SectionTitle className={styles.headTitle}>LEARNING NOTES</SectionTitle>
         <Link className={styles.moreLink} href="/blog?filter=article">
           もっと見る →
         </Link>

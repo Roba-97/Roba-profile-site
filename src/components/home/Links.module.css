@@ -3,22 +3,20 @@
   margin: 0;
   padding: 0;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.9rem;
+  flex-direction: column;
+  gap: 0.6rem;
 }
 
 .node {
-  position: relative;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 0.55em;
-  padding: 0.85em 1.5em;
+  gap: 0.9em;
+  padding: 0.9em 1.3em;
   border-radius: 3px;
   border: 1.5px solid var(--line);
   background: var(--panel);
-  font-family: var(--font-mono);
-  font-size: 0.92rem;
   overflow: hidden;
+  position: relative;
   transition: border-color 0.3s ease, transform 0.25s ease;
 }
 .node::before {
@@ -34,14 +32,39 @@
 .node:hover,
 .node:focus-visible {
   border-color: var(--amber);
-  transform: translateY(-2px);
+  transform: translateX(4px);
 }
 .node:hover::before,
 .node:focus-visible::before {
   transform: scale(1);
 }
 
+.icon {
+  width: 1.2em;
+  height: 1.2em;
+  flex-shrink: 0;
+  color: var(--ink-faint);
+}
+
+.role {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--ink);
+  flex: 1;
+}
+
 .arrow {
+  flex-shrink: 0;
   opacity: 0.6;
-  font-size: 0.85em;
+  width: 0.9em;
+  height: 0.9em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .node {
+    transition: none;
+  }
+  .node::before {
+    transition: none;
+  }
 }
