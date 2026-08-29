@@ -1,6 +1,8 @@
 "use client"
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./PathRail.module.css";
 
 const railItems = [
@@ -14,6 +16,7 @@ const railItems = [
 
 export function PathRail() {
   const [activeId, setActiveId] = useState<string | null>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const sections = document.querySelectorAll("main section");
@@ -34,8 +37,35 @@ export function PathRail() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (!trackRef.current || reduceMotion) return;
+
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        trackRef.current,
+        { scaleY: 0 },
+        {
+          scaleY: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: "main",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: true,
+          },
+        }
+      );
+    });
+    return () => ctx.revert();
+  }, []);
+
   return (
     <nav className={styles.rail} aria-label="セクション">
+      <div className={styles.track} ref={trackRef} aria-hidden="true" />
       <ol>
         {railItems.map((item) => (
           <li

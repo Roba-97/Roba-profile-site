@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Zen_Kaku_Gothic_New } from "next/font/google";
+import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import "./globals.css";
 
 const jetbrainsMono = JetBrains_Mono({
@@ -22,7 +23,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="ja" className={`${jetbrainsMono.variable} ${zenKakuGothicNew.variable}`}>
-      <body suppressHydrationWarning >{children}</body>
+      <body suppressHydrationWarning>
+        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+      </body>
     </html>
   );
 }
